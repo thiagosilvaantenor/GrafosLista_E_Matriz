@@ -64,11 +64,11 @@ public class GrafoLista<T> {
 	public void remove(T key) {
 		// remove da lista
 		map.remove(key);
-		for (T item: map.keySet()) {
+		for (T item : map.keySet()) {
 			ListaEncadeadaSimples<T> listaItem = map.get(item);
 			No<T> buffer = listaItem.getInicio();
-			while (buffer != null){
-				if(buffer.getValor().equals(key)){
+			while (buffer != null) {
+				if (buffer.getValor().equals(key)) {
 					int indice = listaItem.index(key);
 					listaItem.remove(indice);
 				}

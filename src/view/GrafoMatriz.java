@@ -1,11 +1,11 @@
 package view;
 
-import controller.GrafoListaController;
+import controller.GrafoMatrizController;
 
-public class GrafoLista {
+public class GrafoMatriz {
 	public static void main(String[] args) {
 		try {
-			GrafoListaController obj = new GrafoListaController();
+			GrafoMatrizController obj = new GrafoMatrizController();
 			System.out.println(obj.teste());
 		} catch (Exception e) {
 			e.printStackTrace();
