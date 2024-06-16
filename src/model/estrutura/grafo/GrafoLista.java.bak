@@ -1,0 +1,67 @@
+package model.estrutura.grafo;
+
+import java.util.*;
+import model.estrutura.listaencadeada.ListaEncadeadaSimples;
+import model.estrutura.listaencadeada.No;
+
+public class GrafoLista<T> {
+	// Vou escolher para este exemplo uma lista por LABEL
+	private Map<T, ListaEncadeadaSimples<T> > map = new HashMap<>();
+	
+	// add: Adiciona um novo elemento
+	// has: verifica se existe um elemento
+	// size: Retorna o número de elemento
+	// toString(): imprime na tela
+	//
+	
+	public void add(T source) {
+		map.put(source, new ListaEncadeadaSimples<T>());
+	}
+	
+	public void add(T source, T destination) {
+		if (!map.containsKey(source))
+			add(source);
+		if (!map.containsKey(destination))
+			add(destination);
+		
+		map.get(source).append(destination);
+		map.get(destination).append(source);
+	}
+	
+	public boolean has(T s) {
+		return map.containsKey(s);
+	}
+	
+	public boolean has(T s, T d) {
+		return map.get(s).contains(d);
+	}
+	
+	public int size() {
+		return map.keySet().size();
+	}
+	
+	public void remove(T key, T elemento){
+		//remove da lista
+		int indice = map.index(elemento);
+		map.remove(indice);
+		
+		
+	}
+	
+	// Escrever um output do grafo
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		
+		for (T v : map.keySet()) {
+			builder.append(v.toString() + ": ");
+			for (T w : map.get(v)) {
+				builder.append(w.toString() + " ");
+			}
+			builder.append("\n");
+		}
+		return (builder.toString());
+	}
+	
+	
+}
